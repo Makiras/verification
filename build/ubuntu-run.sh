@@ -8,6 +8,11 @@ start_xrdp_services() {
     rm -rf /var/run/xrdp/xrdp-sesman.pid
     rm -rf /var/run/xrdp/xrdp.pid
 
+    service ssh start
+    rm -rf /var/tmp/*
+    rm -rf /usr/tmp/*
+    rm -rf /tmp/*
+    LD_PRELOAD=/data/synopsys/scl/snpslmd-hack.so /data/synopsys/scl/2018.06/linux64/bin/lmgrd -c /data/synopsys/license/Synopsys.dat >> /data/log 
     # Use exec ... to forward SIGNAL to child processes
     xrdp-sesman && exec xrdp -n
 }

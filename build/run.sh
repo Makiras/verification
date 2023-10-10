@@ -6,7 +6,8 @@ start_xrdp_services() {
     rm -rf /var/run/xrdp.pid
     rm -rf /var/run/xrdp/xrdp-sesman.pid
     rm -rf /var/run/xrdp/xrdp.pid
-
+    
+    service ssh start
     # Use exec ... to forward SIGNAL to child processes
     xrdp-sesman
     exec xrdp -n
